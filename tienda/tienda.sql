@@ -94,17 +94,78 @@ ORDER BY nombre DESC;
 
 -- 15. Lista los nombres de los productos ordenados en primer lugar por el nombre de
 -- forma ascendente y en segundo lugar por el precio de forma descendente. 
+select nombre
+from producto
+order by nombre asc, precio desc;
 
+-- 16. Devuelve una lista con las 5 primeras filas de la tabla fabricante. 
+select *
+from fabricante
+limit 5;
 
+-- 17. Devuelve una lista con 2 filas a partir de la cuarta fila de la tabla fabricante. La
+-- cuarta fila también se debe incluir en la respuesta.
+SELECT *
+FROM fabricante
+LIMIT 3, 2;
 
+-- 18. Lista el nombre y el precio del producto más barato. (Utilice solamente las
+-- cláusulas ORDER BY y LIMIT)
+SELECT nombre, precio
+FROM producto
+ORDER BY precio ASC
+LIMIT 1; 
+ 
+-- 19. Lista el nombre y el precio del producto más caro. (Utilice solamente las
+-- cláusulas ORDER BY y LIMIT)
+SELECT nombre, precio
+FROM producto
+ORDER BY precio DESC
+LIMIT 1; 
 
+-- 20. Lista el nombre de todos los productos del fabricante cuyo identificador de
+-- fabricante es igual a 2.
+select nombre
+from producto as p
+where p.id_fabricante = 2;
 
+-- 21. Lista el nombre de los productos que tienen un precio menor o igual a 120.
+select nombre , precio
+from producto
+where precio <= 120;
 
+-- 22. Lista el nombre de los productos que tienen un precio mayor o igual a 400.
+SELECT nombre
+FROM producto
+WHERE precio >= 400; 
 
+-- 23. Lista el nombre de los productos que no tienen un precio mayor o igual a 400.
+SELECT nombre
+FROM producto
+WHERE precio < 400;
+-- 24. Lista todos los productos que tengan un precio entre 80 y 300. Sin utilizar el
+-- operador BETWEEN.
+SELECT nombre
+FROM producto
+WHERE precio >= 80 AND precio <= 300; 
 
+-- 25. Lista todos los productos que tengan un precio entre 60 y 200. Utilizando el
+-- operador BETWEEN.
+SELECT nombre
+FROM producto
+WHERE precio BETWEEN 60 AND 200;
 
+-- 26. Lista todos los productos que tengan un precio mayor que 200 y que el
+-- identificador de fabricante sea igual a 6. 
+select nombre, precio
+from producto
+where producto.precio > 200 and producto.id_fabricante = 6;
 
-
+-- 27. Lista todos los productos donde el identificador de fabricante sea 1, 3 o 5. Sin
+-- utilizar el operador IN.
+SELECT *
+FROM producto
+WHERE id_fabricante = 1 OR id_fabricante = 3 OR id_fabricante = 5; 
 
 
 
