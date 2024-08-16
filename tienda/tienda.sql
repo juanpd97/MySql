@@ -271,22 +271,46 @@ FROM producto
 WHERE id_fabricante = (SELECT id FROM fabricante WHERE
 nombre = 'Lenovo'); 
 
+/*7. Devuelve una lista de todos los productos del fabricante Crucial que tengan 
+un precio mayor que 200. */
+select * from producto
+WHERE producto.precio > 200 and producto.id_fabricante = (SELECT id
+														from fabricante
+														WHERE fabricante.nombre = 'Crucial');
+														
+/*8. Devuelve un listado con todos los productos de los fabricantes 
+Asus, Hewlett-Packardy Seagate. Sin utilizar el operador IN. */														
+										
+SELECT * 
+FROM producto 
+WHERE id_fabricante = (SELECT id FROM fabricante WHERE
+nombre = 'Asus') 
+ OR id_fabricante = (SELECT id FROM fabricante WHERE nombre 
+= 'Hewlett-Packard') 
+ OR id_fabricante = (SELECT id FROM fabricante WHERE nombre 
+= 'Seagate'); 
 
+/*9. Devuelve un listado con todos los productos de los fabricantes 
+Asus, Hewlett-Packard y Seagate. Utilizando el operador IN*/
 
+SELECT * FROM producto
+WHERE producto.id_fabricante in(SELECT id FROM fabricante WHERE nombre = 'Asus' or 
+nombre = 'Hewlett-Packard' or nombre = 'Seagate');
 
+/*10. Devuelve un listado con el nombre y el precio de todos los productos de los 
+fabricantes cuyo nombre termine por la vocal e. */
 
+SELECT nombre , precio
+FROM producto
+WHERE id_fabricante in(SELECT id
+						FROM fabricante
+						WHERE nombre like'%e');
 
-
-
-
-
-
-
-
-
-
-
-
+/*11. Devuelve un listado con el nombre y el precio de todos los productos cuyo 
+nombre de fabricante contenga el carácter w en su nombre.*/
+SELECT p.nombre , p.precio
+FROM producto p , fabricante f
+where p.id_fabricante = f.id and f.nombre like '%w%';
 
 
 
